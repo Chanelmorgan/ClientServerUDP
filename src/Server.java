@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.SocketException;
 
 public class Server {
 
@@ -64,6 +65,13 @@ public class Server {
                 break; // so we can break out of the while loop
             }
         }
+    }
+
+    public static void main(String[] args) throws SocketException {
+        DatagramSocket datagramSocket = new DatagramSocket(1234);
+        Server server = new Server(datagramSocket);
+        server.receiveThenSend();
+
     }
 
 
