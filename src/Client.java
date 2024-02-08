@@ -1,7 +1,5 @@
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
+import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
@@ -44,7 +42,12 @@ public class Client {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SocketException, UnknownHostException {
+        DatagramSocket datagramSocket = new DatagramSocket();
+        InetAddress inetAddress = InetAddress.getByName("localhost"); // losthost because in own computer
+        Client client = new Client(datagramSocket, inetAddress);
+        System.out.println("The program started... ");
+        client.sendThenReceive();
 
     }
 
